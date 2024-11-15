@@ -16,6 +16,11 @@ const UnionSchema = new mongoose.Schema({
     type: Array,
     required: true,
   },
+
+  chatId: {
+    type: String,
+    required: true,
+  },
 });
 
 const Union = mongoose.model("Union", UnionSchema);
