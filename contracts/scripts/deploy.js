@@ -11,7 +11,7 @@ async function main() {
 
   console.log("Deploying contracts with the account:", deployer.address);
 
-  const contract = await hre.ethers.deployContract("QuadraticUnion", [], {
+  const contract = await hre.ethers.deployContract("NounsNFT", [], {
     gasLimit: 4000000,
   });
 

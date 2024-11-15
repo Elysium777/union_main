@@ -34,12 +34,17 @@ module.exports = {
       url: "https://api.avax-test.network/ext/bc/C/rpc",
       accounts: [PRIVATE_KEY],
     },
+    flareTestnet: {
+      url: "https://coston2-api.flare.network/ext/C/rpc",
+      accounts: [PRIVATE_KEY],
+    },
   },
   etherscan: {
     apiKey: {
       opSepolia: "89K6NC1QZIUZSA6A6S5SY1N3DVIBCJCD3A",
       baseSepolia: "BZP99H9U5SEDZTTP3BIBUYE5X2TMM9PX5Q",
       fuji: "your API key",
+      flareTestnet: "your API key",
     },
     customChains: [
       {
@@ -58,7 +63,6 @@ module.exports = {
           browserURL: "https://sepolia.basescan.org/",
         },
       },
-
       {
         network: "fuji",
         chainId: 43113,
@@ -66,6 +70,14 @@ module.exports = {
           apiURL:
             "https://api.routescan.io/v2/network/testnet/evm/43113/etherscan",
           browserURL: "https://c-chain.snowtrace.io",
+        },
+      },
+      {
+        network: "flareTestnet",
+        chainId: 114,
+        urls: {
+          apiURL: "https://coston2-explorer.flare.network/api",
+          browserURL: "https://coston2-explorer.flare.network/",
         },
       },
     ],
