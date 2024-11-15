@@ -1,0 +1,86 @@
+const daoDataLists = [
+  {
+    id: 1,
+    name: "DeFi DAO",
+    description: "A decentralized autonomous organization focused on DeFi.",
+    blockchain: "Ethereum",
+    status: "Active",
+    image: "/dao/DeFi DAO.png",
+  },
+  {
+    id: 2,
+    name: "NFT DAO",
+    description: "A community-driven DAO for NFT enthusiasts.",
+    blockchain: "Ethereum",
+    status: "Active",
+    image: "/dao/NFT DAO.png",
+  },
+  {
+    id: 3,
+    name: "Base DAO",
+    description: "A DAO dedicated to building on the Base blockchain.",
+    blockchain: "Base",
+    status: "Active",
+    image: "/dao/Base DAO.png",
+  },
+  {
+    id: 4,
+    name: "Governance DAO",
+    description: "A DAO for governance and decentralized decision-making.",
+    blockchain: "Polygon",
+    status: "Inactive",
+    image: "/dao/Governance DAO.png",
+  },
+  {
+    id: 5,
+    name: "Open Source DAO",
+    description: "A DAO supporting open-source software development.",
+    blockchain: "Arbitrum",
+    status: "Active",
+    image: "/dao/Open Source DAO.png",
+  },
+  {
+    id: 6,
+    name: "Gaming DAO",
+    description: "A DAO focused on blockchain gaming and metaverse projects.",
+    blockchain: "Optimism",
+    status: "Active",
+    image: "/dao/Gaming DAO.png",
+  },
+  {
+    id: 7,
+    name: "Charity DAO",
+    description: "A DAO aimed at decentralized charitable donations.",
+    blockchain: "Ethereum",
+    status: "Active",
+    image: "/dao/Charity DAO.png",
+  },
+  {
+    id: 8,
+    name: "Education DAO",
+    description: "A DAO promoting decentralized education and learning.",
+    blockchain: "Polygon",
+    status: "Active",
+    image: "/dao/Education DAO.png",
+  },
+  {
+    id: 9,
+    name: "Research DAO",
+    description:
+      "A DAO funding and supporting decentralized research projects.",
+    blockchain: "Arbitrum",
+    status: "Active",
+    image: "/dao/Research DAO.png",
+  },
+  {
+    id: 10,
+    name: "Social DAO",
+    description:
+      "A DAO for decentralized social networking and community building.",
+    blockchain: "Optimism",
+    status: "Active",
+    image: "/dao/Social DAO.png",
+  },
+];
+
+export default daoDataLists;
