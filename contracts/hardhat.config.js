@@ -67,6 +67,11 @@ module.exports = {
       url: "https://zircuit1-testnet.p2pify.com",
       accounts: [PRIVATE_KEY],
     },
+    lineaSepolia: {
+      url:
+        "https://linea-sepolia.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+      accounts: [PRIVATE_KEY],
+    },
   },
   etherscan: {
     apiKey: {
@@ -81,6 +86,7 @@ module.exports = {
       chilizSpicy: "your API key",
       rootstockTestnet: "your API key",
       zircuitTestnet: "F8AD75692E6B1FBBCDA14725D7FA01E6C6",
+      lineaSepolia: "ACJWA4HXNWYRYRBCWXYVDE49R5IBUP31M8",
     },
     customChains: [
       {
@@ -171,6 +177,14 @@ module.exports = {
           apiURL:
             "https://explorer.testnet.zircuit.com/api/contractVerifyHardhat",
           browserURL: "https://explorer.testnet.zircuit.com",
+        },
+      },
+      {
+        network: "lineaSepolia",
+        chainId: 59141,
+        urls: {
+          apiURL: "https://api-sepolia.lineascan.build/api",
+          browserURL: "https://sepolia.lineascan.build",
         },
       },
     ],

@@ -13,6 +13,7 @@ import {
   baseSepolia,
   flareTestnet,
   flowTestnet,
+  lineaSepolia,
   rootstockTestnet,
   scrollSepolia,
   zircuitTestnet,
@@ -37,6 +38,7 @@ const CapsuleProvider = ({ children }) => {
             baseSepolia,
             rootstockTestnet,
             zircuitTestnet,
+            lineaSepolia,
           ],
           transports: {
             [flareTestnet.id]: http(),
@@ -46,6 +48,7 @@ const CapsuleProvider = ({ children }) => {
             [baseSepolia.id]: http(),
             [rootstockTestnet.id]: http(),
             [zircuitTestnet.id]: http(),
+            [lineaSepolia.id]: http(),
           },
           wallets: [
             metaMaskWallet,
