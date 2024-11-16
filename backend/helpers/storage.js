@@ -159,9 +159,9 @@ const listAllUnion = async (chainId) => {
 
     const res = await axios.get(`${API_BASE_URL}/buckets/${bucketId}/files`);
 
-    const filteredData = res.data.filter(
-      (file) => file.Name.split("_")[0] === chainId
-    );
+    const filteredData = res.data.data.filter((data) => {
+      return data.Name.split("_")[0] === chainId;
+    });
 
     return filteredData;
   } catch (error) {

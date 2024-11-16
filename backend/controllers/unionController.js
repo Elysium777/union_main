@@ -56,7 +56,7 @@ const getAllUnion = async (req, res) => {
     const unionResponse = await listAllUnion(chainId);
 
     const allUnions = unionResponse.map((union) => {
-      return union.name.split(".json")[0];
+      return union.Name.split("_")[1].split(".")[0];
     });
 
     res.json({
