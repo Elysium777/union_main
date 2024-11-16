@@ -9,7 +9,7 @@ import {
   zerionWallet,
 } from "@usecapsule/evm-wallet-connectors";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { baseSepolia } from "wagmi/chains";
+import { flareTestnet } from "wagmi/chains";
 import { http } from "wagmi";
 
 const queryClient = new QueryClient();
@@ -21,9 +21,9 @@ const CapsuleProvider = ({ children }) => {
         config={{
           projectId: "32c27f9ae960e76b42818bcc3a60ea05",
           appName: "Union",
-          chains: [baseSepolia],
+          chains: [flareTestnet],
           transports: {
-            [baseSepolia.id]: http(),
+            [flareTestnet.id]: http(),
           },
           wallets: [
             metaMaskWallet,

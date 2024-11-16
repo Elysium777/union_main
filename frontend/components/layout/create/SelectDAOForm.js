@@ -63,6 +63,9 @@ const SelectDAOForm = ({
           <option value="Conviction" style={{ color: "#e2e8f0" }} />
           <option value="NFT" style={{ color: "#e2e8f0" }} />
           <option value="Quadratic" style={{ color: "#e2e8f0" }} />
+          {chainId === 114 && (
+            <option value="Flare" style={{ color: "#e2e8f0" }} />
+          )}
         </datalist>
       </div>
       {type === "Conviction" && (
