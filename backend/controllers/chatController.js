@@ -2,7 +2,7 @@ const createGroupChat = async (req, res) => {
   try {
     const user = req.user;
 
-    const { title, description, image, private } = req.body;
+    const { title, description, image = null, private } = req.body;
 
     if (!title) {
       throw new Error("Group name is required");
