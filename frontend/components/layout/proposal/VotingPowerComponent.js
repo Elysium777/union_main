@@ -20,6 +20,8 @@ const VotingPowerComponent = ({ chainId, unionAddress, unionMetadata }) => {
 
     const votingPower = await getVotingPower(chainId, unionAddress, address);
 
+    console.log(votingPower);
+
     setVotingPower(votingPower);
   };
 
@@ -53,7 +55,10 @@ const VotingPowerComponent = ({ chainId, unionAddress, unionMetadata }) => {
           <p>
             Your voting power in this union is{" "}
             <span className="font-bold">
-              {unionMetadata?.type === "nft" || unionMetadata?.type === "equal"
+              {unionMetadata?.type === "flare"
+                ? Number(votingPower / 10 ** 7)
+                : unionMetadata?.type === "nft" ||
+                  unionMetadata?.type === "equal"
                 ? Number(votingPower)
                 : Number(votingPower / 10 ** 18)}
             </span>

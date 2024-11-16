@@ -8,23 +8,29 @@ const VotingCalculation = ({
 }) => {
   const votes = {
     yay: isUnion
-      ? unionMetadata?.type === "equal" ||
-        unionMetadata?.type === "nft" ||
-        unionMetadata?.type === "quadratic"
+      ? unionMetadata?.type === "flare"
+        ? Number(unionVotes?.forVotes / 10 ** 7)
+        : unionMetadata?.type === "equal" ||
+          unionMetadata?.type === "nft" ||
+          unionMetadata?.type === "quadratic"
         ? Number(unionVotes?.forVotes)
         : Number(unionVotes?.forVotes / 10 ** 18)
       : Number(proposal?.forVotes / 10 ** 18),
     nay: isUnion
-      ? unionMetadata?.type === "equal" ||
-        unionMetadata?.type === "nft" ||
-        unionMetadata?.type === "quadratic"
+      ? unionMetadata?.type === "flare"
+        ? Number(unionVotes?.againstVotes / 10 ** 7)
+        : unionMetadata?.type === "equal" ||
+          unionMetadata?.type === "nft" ||
+          unionMetadata?.type === "quadratic"
         ? Number(unionVotes?.againstVotes)
         : Number(unionVotes?.againstVotes / 10 ** 18)
       : Number(proposal?.againstVotes / 10 ** 18),
     abstain: isUnion
-      ? unionMetadata?.type === "equal" ||
-        unionMetadata?.type === "nft" ||
-        unionMetadata?.type === "quadratic"
+      ? unionMetadata?.type === "flare"
+        ? Number(unionVotes?.abstainVotes / 10 ** 7)
+        : unionMetadata?.type === "equal" ||
+          unionMetadata?.type === "nft" ||
+          unionMetadata?.type === "quadratic"
         ? Number(unionVotes?.abstainVotes)
         : Number(unionVotes?.abstainVotes / 10 ** 18)
       : Number(proposal?.abstainVotes / 10 ** 18),

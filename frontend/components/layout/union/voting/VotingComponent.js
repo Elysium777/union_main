@@ -127,7 +127,10 @@ const VotingComponent = ({
 
           <span>
             {unionMetadata?.type !== "quadratic"
-              ? unionMetadata?.type === "nft" || unionMetadata?.type === "equal"
+              ? unionMetadata?.type === "flare"
+                ? Number(votingPower / 10 ** 7)
+                : unionMetadata?.type === "nft" ||
+                  unionMetadata?.type === "equal"
                 ? Number(votingPower)
                 : Number(votingPower / 10 ** 18)
               : 10}

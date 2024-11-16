@@ -20,7 +20,7 @@ const config = {
           abi: DAOabi,
         },
         UnionProxyFactory: {
-          address: "0x0B62BDA8EcE17AFfa7adAe16bBaBBC8584A30016",
+          address: "0x62CB235Cf18Af7b62B918d93DA89212bc89daFdc",
           abi: UnionProxyFactoryabi,
         },
         ConvictionUnion: {
@@ -44,7 +44,7 @@ const config = {
           abi: QuadraticUnionabi,
         },
         FlareUnion: {
-          address: "0xE34906Eda6Cf2cafFa1d567523C7954fDf9E80E0",
+          address: "0xC1AEA53f0c1EF35219A90Bec9495D3561a4B5951",
           abi: FlareUnionabi,
         },
       },
