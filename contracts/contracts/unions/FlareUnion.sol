@@ -4,10 +4,7 @@ pragma solidity >=0.7.0 <0.9.0;
 import "../base/BaseUnion.sol";
 import "../common/Singleton.sol";
 import "../common/StorageAccessible.sol";
-import {TestFtsoV2Interface} from "@flarenetwork/flare-periphery-contracts/coston2/TestFtsoV2Interface.sol";
-import {ContractRegistry} from "@flarenetwork/flare-periphery-contracts/coston2/ContractRegistry.sol";
-import {IFtsoFeedIdConverter} from "@flarenetwork/flare-periphery-contracts/coston2/IFtsoFeedIdConverter.sol";
-import {IFastUpdatesConfiguration} from "@flarenetwork/flare-periphery-contracts/coston2/IFastUpdatesConfiguration.sol";
+import "../interfaces/IFtsoV2FeedConsumer.sol";
 
 /**
  * @title Traditional Union
@@ -15,27 +12,10 @@ import {IFastUpdatesConfiguration} from "@flarenetwork/flare-periphery-contracts
  * @notice Traditional Union contract
  */
 contract FlareUnion is Singleton, StorageAccessible, BaseUnion {
-    TestFtsoV2Interface internal ftsoV2;
-    IFtsoFeedIdConverter internal feedIdConverter;
-    bytes21 public flrUsdId = 0x01464c522f55534400000000000000000000000000;
+    IFtsoV2FeedConsumer internal ftsoV2 =
+        IFtsoV2FeedConsumer(0xc486AE1a7Bf2e8980C35761ccfd63D6102332025);
 
-    constructor() {
-        ftsoV2 = ContractRegistry.getTestFtsoV2();
-        feedIdConverter = ContractRegistry.getFtsoFeedIdConverter();
-    }
-
-    /**
-     * @notice Get the Flare-USD price
-     * @return
-     * @return
-     * @return
-     */
-    function getFlrUsdPrice() public view returns (uint256, int8, uint64) {
-        (uint256 feedValue, int8 decimals, uint64 timestamp) = ftsoV2
-            .getFeedById(flrUsdId);
-
-        return (feedValue, decimals, timestamp);
-    }
+    constructor() {}
 
     /**
      * @notice Initializes the Traditional Union contract
@@ -54,17 +34,33 @@ contract FlareUnion is Singleton, StorageAccessible, BaseUnion {
     }
 
     /**
+     * @notice Get the FLR/USD price feed value
+     */
+    function getFeedValue() public view returns (uint256) {
+        (uint256 feedValue, , ) = ftsoV2.getFlrUsdPrice();
+        return feedValue;
+    }
+
+    /**
+     * @notice Get the delegation power of a member
+     * @param member The address of the member
+     */
+    function delegationPower(address member) public view returns (uint256) {
+        return tokenDelegate[member];
+    }
+
+    /**
      * @notice Get the voting power of a member
      * @param member The address of the member
      */
     function getVotingPower(
         address member
     ) public view override returns (uint256) {
-        (uint256 feedValue, , ) = getFlrUsdPrice();
+        uint256 feedValue = FlareUnion(address(singleton)).getFeedValue();
 
-        uint256 flrBalance = tokenDelegate[member];
+        uint256 usdtBalance = tokenDelegate[member] / 10 ** 18;
 
-        return flrBalance * feedValue;
+        return usdtBalance * feedValue;
     }
 
     /**
