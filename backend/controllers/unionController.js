@@ -343,6 +343,32 @@ const getUnionMembers = async (req, res) => {
   }
 };
 
+const getUnionChatId = async (req, res) => {
+  try {
+    const { chainId, address } = req.params;
+
+    if (!chainId || !address) {
+      throw new Error("ChainId and address are required");
+    }
+
+    const union = await Union.findOne({ chainId, proxyAddress: address });
+
+    if (!union) {
+      throw new Error("Union not found");
+    }
+
+    res.json({
+      success: true,
+      chatId: union.chatId,
+    });
+  } catch (err) {
+    res.json({
+      success: false,
+      message: err.message,
+    });
+  }
+};
+
 module.exports = {
   getUnion,
   getAllUnion,
@@ -350,4 +376,5 @@ module.exports = {
   addMemberToUnion,
   removeMemberFromUnion,
   getUnionMembers,
+  getUnionChatId,
 };

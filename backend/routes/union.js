@@ -6,6 +6,7 @@ const {
   addMemberToUnion,
   removeMemberFromUnion,
   getUnionMembers,
+  getUnionChatId,
 } = require("../controllers/unionController");
 const initializeUserMiddleware = require("../middleware/initializeUser");
 const router = express.Router();
@@ -29,5 +30,7 @@ router.patch(
 );
 
 router.get("/members/:chainId/:address", getUnionMembers);
+
+router.get("/chatId/:chainId/:address", getUnionChatId);
 
 module.exports = router;
