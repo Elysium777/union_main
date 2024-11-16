@@ -44,7 +44,9 @@ export default function useCreate() {
         type !== "Conviction" &&
         type !== "Equal" &&
         type !== "Traditional" &&
-        type !== "NFT"
+        type !== "NFT" &&
+        type !== "Quadratic" &&
+        type !== "Flare"
       ) {
         toast.error("Invalid union type selected");
         return;
@@ -106,7 +108,7 @@ export default function useCreate() {
           "initializeConvictionUnion",
           [selectedDAO, selectedDAO, unionName, address, period]
         );
-      } else {
+      } else if (type === "NFT") {
         const provider = new ethers.providers.JsonRpcProvider(
           currentChain.rpcUrl
         );
@@ -141,6 +143,36 @@ export default function useCreate() {
           nftAddress,
           1,
         ]);
+      } else if (type === "Quadratic") {
+        const provider = new ethers.providers.JsonRpcProvider(
+          currentChain.rpcUrl
+        );
+
+        const union = new ethers.Contract(
+          currentChain.deployments.QuadraticUnion.address,
+          currentChain.deployments.QuadraticUnion.abi,
+          provider
+        );
+
+        initializer = union.interface.encodeFunctionData(
+          "initializeQuadraticUnion",
+          [selectedDAO, selectedDAO, unionName, address]
+        );
+      } else {
+        const provider = new ethers.providers.JsonRpcProvider(
+          currentChain.rpcUrl
+        );
+
+        const union = new ethers.Contract(
+          currentChain.deployments.FlareUnion.address,
+          currentChain.deployments.FlareUnion.abi,
+          provider
+        );
+
+        initializer = union.interface.encodeFunctionData(
+          "initializeTraditionalUnion",
+          [selectedDAO, selectedDAO, unionName, address]
+        );
       }
 
       const response = await axios.post(
