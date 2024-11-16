@@ -117,6 +117,9 @@ const createNewUnion = async (req, res) => {
       case "quadratic":
         singleton = currentChain.deployments.QuadraticUnion.address;
         break;
+      case "flare":
+        singleton = currentChain.deployments.FlareUnion.address;
+        break;
       default:
         throw new Error("Invalid union type");
     }
@@ -182,6 +185,7 @@ const createNewUnion = async (req, res) => {
       metadata: unionMetadata,
     });
   } catch (err) {
+    console.log(err);
     res.json({
       success: false,
       message: err.message,

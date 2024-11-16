@@ -19,7 +19,7 @@ const getNotification = async (req, res) => {
     };
 
     const allNotifications = await user.channel.notifications(
-      "0xd203ec25bd177bd90d0e8e29acd74b4a2c840aa9",
+      "0xA2d6267B5b167Ee27174BfDa808408F90391D949",
       options
     );
 

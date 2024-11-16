@@ -12,7 +12,7 @@ const config = {
     {
       name: "Flare Testnet",
       chainId: 114,
-      rpcUrl: "https://coston2-explorer.flare.network",
+      rpcUrl: "https://coston2-api.flare.network/ext/C/rpc",
       deployments: {
         DAO: {
           address: "",
