@@ -56,7 +56,7 @@ const getAllUnion = async (req, res) => {
     const unionResponse = await listAllUnion(chainId);
 
     const allUnions = unionResponse.map((union) => {
-      return union.name.split(".json")[0];
+      return union.Name.split("_")[1].split(".")[0];
     });
 
     res.json({
@@ -116,6 +116,9 @@ const createNewUnion = async (req, res) => {
         break;
       case "quadratic":
         singleton = currentChain.deployments.QuadraticUnion.address;
+        break;
+      case "flare":
+        singleton = currentChain.deployments.FlareUnion.address;
         break;
       default:
         throw new Error("Invalid union type");
@@ -182,6 +185,7 @@ const createNewUnion = async (req, res) => {
       metadata: unionMetadata,
     });
   } catch (err) {
+    console.log(err);
     res.json({
       success: false,
       message: err.message,

@@ -6,17 +6,9 @@ const config = require("../lib/config");
 let user;
 
 const initializeUser = async () => {
-  const chainId = 84532;
-
-  const currentChain = config.chains.find(
-    (chain) => chain.chainId === Number(chainId)
+  const provider = new ethers.providers.JsonRpcProvider(
+    "https://base-sepolia-rpc.publicnode.com"
   );
-
-  if (!currentChain) {
-    throw new Error("Invalid chainId");
-  }
-
-  const provider = new ethers.providers.JsonRpcProvider(currentChain.rpcUrl);
   const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
 
   if (!user) {

@@ -5,7 +5,7 @@ const {
   uploadProposalMetadata,
   getProposalMetadata,
 } = require("../helpers/storage");
-const { sendNotification } = require("./notificationController");
+const { sendPushNotification } = require("./notificationController");
 const { getSummary } = require("../helpers/ai");
 
 const getProposal = async (req, res) => {
@@ -187,7 +187,7 @@ const createNewProposal = async (req, res) => {
     req.body.cta = `/dao/${dao.address}/proposal/${proposal.id}`;
     req.body.summary = summary;
 
-    await sendNotification(req, res);
+    await sendPushNotification(req, res);
 
     res.json({
       success: true,

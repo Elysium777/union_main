@@ -90,11 +90,14 @@ const getProposalMetadata = async (proposalId) => {
     };
 
     const res = await axios.get(
-      `${API_BASE_URL}/buckets/${bucketId}/files/${proposalId}.json/download`,
+      `${API_BASE_URL}/buckets/${bucketId}/files/${proposalId.replaceAll(
+        "-",
+        "_"
+      )}.json/download`,
       headers
     );
 
-    return JSON.parse(res.data);
+    return res.data;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -143,7 +146,7 @@ const getUnionMetadata = async (chainId, proxyAddress) => {
       headers
     );
 
-    return JSON.parse(res.data);
+    return res.data;
   } catch (error) {
     throw new Error(error.message);
   }
@@ -156,9 +159,9 @@ const listAllUnion = async (chainId) => {
 
     const res = await axios.get(`${API_BASE_URL}/buckets/${bucketId}/files`);
 
-    const filteredData = res.data.filter(
-      (file) => file.Name.split("_")[0] === chainId
-    );
+    const filteredData = res.data.data.filter((data) => {
+      return data.Name.split("_")[0] === chainId;
+    });
 
     return filteredData;
   } catch (error) {

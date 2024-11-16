@@ -17,9 +17,9 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/dao", require("./routes/dao"));
-// app.use("/api/proposal", require("./routes/proposal"));
-// app.use("/api/union", require("./routes/union"));
-// app.use("/api/notification", require("./routes/notifications"));
+app.use("/api/proposal", require("./routes/proposal"));
+app.use("/api/union", require("./routes/union"));
+app.use("/api/notification", require("./routes/notifications"));
 
 // Listen for requests
 app.listen(PORT, () => {
