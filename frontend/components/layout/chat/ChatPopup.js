@@ -7,11 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { setMessages } from "@/redux/slice/pushSlice";
 import PushButton from "../notifications/PushButton";
 import SendMessage from "./SendMessage";
+import JoinGroup from "./JoinGroup";
 
 const ChatPopup = ({ title = "Loading...", chatId }) => {
+  console.log("ChatPopup", chatId);
   const dispatch = useDispatch();
 
   const [isOpen, setIsOpen] = useState(false);
+  const [permission, setPermission] = useState([]);
 
   const isConnected = useSelector((state) => state.push.isConnected);
   const user = useSelector((state) => state.push.pushSign);
@@ -29,6 +32,22 @@ const ChatPopup = ({ title = "Loading...", chatId }) => {
   useEffect(() => {
     if (isConnected) {
       fetchChat();
+    }
+  }, [isConnected]);
+
+  const checkGroupPermission = async () => {
+    const permission = await user.chat.group.participants.status(
+      chatId,
+      user.account
+    );
+    console.log("permission", permission);
+
+    setPermission(permission.participant);
+  };
+
+  useEffect(() => {
+    if (isConnected) {
+      checkGroupPermission();
     }
   }, [isConnected]);
 
@@ -53,7 +72,11 @@ const ChatPopup = ({ title = "Loading...", chatId }) => {
               {isConnected ? <ChatMessage /> : <PushButton />}
             </div>
 
-            <SendMessage chatId={chatId} />
+            {permission ? (
+              <SendMessage chatId={chatId} />
+            ) : (
+              <JoinGroup chatId={chatId} setPermission={setPermission} />
+            )}
           </div>
         )}
       </div>

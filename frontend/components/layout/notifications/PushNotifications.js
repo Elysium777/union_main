@@ -1,12 +1,15 @@
-import { setNotification } from "@/redux/slice/pushSlice";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+import { setNotification } from "@/redux/slice/pushSlice";
 
 const PushNotifications = () => {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.push.pushSign);
   const notifications = useSelector((state) => state.push.notification);
+
+  console.log("notifications", notifications);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

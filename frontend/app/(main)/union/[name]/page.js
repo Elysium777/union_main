@@ -16,6 +16,7 @@ import axios from "axios";
 import JoinUnionButton from "@/components/layout/union/button/JoinUnion";
 import LeaveUnionButton from "@/components/layout/union/button/LeaveUnion";
 import NounsUnion from "@/components/layout/union/NounsUnion";
+import ChatPopup from "@/components/layout/chat/ChatPopup";
 
 const UnionName = ({ params }) => {
   const [daoMetadata, setDaoMetadata] = React.useState({});
@@ -47,7 +48,11 @@ const UnionName = ({ params }) => {
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/union/metadata/${chainId}/${params.name}`
     );
 
-    setUnionMetadata(response.data.metadata);
+    const chatId = await axios.get(
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/union/chatId/${chainId}/${params.name}`
+    );
+
+    setUnionMetadata({ ...response.data.metadata, chatId: chatId.data.chatId });
   };
 
   const loadProposals = async (daoAddress) => {
@@ -124,6 +129,13 @@ const UnionName = ({ params }) => {
           <ContractAndParameter unionAddress={params.name} />
           <NotificationsButton union={params.name} />
         </section>
+
+        {unionMetadata?.chatId && (
+          <ChatPopup
+            title={unionMetadata.title}
+            chatId={unionMetadata.chatId}
+          />
+        )}
       </div>
     </>
   );

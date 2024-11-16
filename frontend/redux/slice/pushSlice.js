@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { set } from "animejs";
 
 const userSlice = createSlice({
   name: "push",
@@ -7,6 +6,7 @@ const userSlice = createSlice({
   initialState: {
     isConnected: null,
     messages: [],
+    notification: [],
     pushSign: null,
     currentGroup: null,
   },
@@ -51,6 +51,18 @@ const userSlice = createSlice({
     clearPushSign: (state) => {
       state.pushSign = null;
     },
+
+    setNotification: (state, action) => {
+      state.notification = action.payload;
+    },
+
+    addNotification: (state, action) => {
+      state.notification.unshift(action.payload);
+    },
+
+    clearNotification: (state) => {
+      state.notification = [];
+    },
   },
 });
 
@@ -64,6 +76,9 @@ export const {
   clearCurrentGroup,
   clearPush,
   clearPushSign,
+  setNotification,
+  addNotification,
+  clearNotification,
 } = userSlice.actions;
 
 export default userSlice.reducer;
