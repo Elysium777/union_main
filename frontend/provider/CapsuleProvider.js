@@ -15,6 +15,7 @@ import {
   flowTestnet,
   rootstockTestnet,
   scrollSepolia,
+  zircuitTestnet,
 } from "wagmi/chains";
 import { http } from "wagmi";
 import { romeTestnet } from "./chains/RomeTestnet";
@@ -35,6 +36,7 @@ const CapsuleProvider = ({ children }) => {
             scrollSepolia,
             baseSepolia,
             rootstockTestnet,
+            zircuitTestnet,
           ],
           transports: {
             [flareTestnet.id]: http(),
@@ -43,6 +45,7 @@ const CapsuleProvider = ({ children }) => {
             [scrollSepolia.id]: http(),
             [baseSepolia.id]: http(),
             [rootstockTestnet.id]: http(),
+            [zircuitTestnet.id]: http(),
           },
           wallets: [
             metaMaskWallet,
