@@ -471,8 +471,7 @@ const config = {
     {
       name: "Linea Sepolia",
       chainId: 59141,
-      rpcUrl:
-        "https://linea-sepolia.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+      rpcUrl: "https://linea-sepolia.blockpi.network/v1/rpc/public",
       deployments: {
         DAO: {
           address: "",
