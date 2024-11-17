@@ -15,6 +15,8 @@ Unite with other delegators to maximize your voting impact and influence decisio
 > 2.  **Equal Union**: Democratic one-person-one-vote system regardless of token holdings.
 > 3.  **Conviction Union**: Time-weighted voting system that rewards long-term commitment.
 > 4.  **NFT Union**: Unique voting power based on NFT holdings and attributes.
+> 5.  **Quadratic Union**: Rank-choice voting (allowing one to express preference of certain choices over others).
+> 6.  **Flare Union**: Stake USDT to resolve your voting power as Flare. Powered by Flare.
 
 This is the Repo for _[getUnion.xyz](https://getUnion.xyz/)_ which is built during the _[ETH Bangkok 2024](https://ethglobal.com/events/bangkok)_.
 
