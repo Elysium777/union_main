@@ -24,6 +24,11 @@ export default function LandingContent() {
       description:
         "Rank-choice voting (allowing one to express preference of certain choices over others).",
     },
+    {
+      title: "Flare",
+      description:
+        "Stake USDT to resolve your voting power as Flare. Powered by Flare.",
+    },
   ];
 
   return (
