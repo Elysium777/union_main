@@ -28,8 +28,8 @@ const CapsuleProvider = ({ children }) => {
     <QueryClientProvider client={queryClient}>
       <CapsuleEvmProvider
         config={{
-          projectId: "32c27f9ae960e76b42818bcc3a60ea05",
-          appName: "Union",
+          projectId: "dbc7bab3406fc9f7af721202c77dbf3c",
+          appName: "Test",
           chains: [
             flareTestnet,
             romeTestnet,
